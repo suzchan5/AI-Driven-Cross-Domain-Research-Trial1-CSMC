@@ -85,4 +85,10 @@ We redefined the panic phenomenon of "mind going blank" as a "fall of a bistable
 - **Tools:** Python (NumPy, Matplotlib), LaTeX, Gemini (Writing Partner), NotebookLM (Grounding)
 
 ---
+
+## 👤 Author
+**Yasuhiro Suzuki**
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/%E5%BA%B7%E5%95%93-%E9%88%B4%E6%9C%A8-a61107279/)
+
+---
 *Disclaimer: This project contains hypotheses generated through dialogue with AI and is not based on actual clinical data. It is a "logical experiment" to explore the applicability of engineering methods to cognitive science.*

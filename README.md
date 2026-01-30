@@ -85,4 +85,10 @@ Google NotebookLM を「厳格なゲートキーパー」として配置。実�
 - **Tools:** Python (NumPy, Matplotlib), LaTeX, Gemini (Writing Partner), NotebookLM (Grounding)
 
 ---
+
+## 👤 著者 (Author)
+**Yasuhiro Suzuki (鈴木 康啓)**
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/%E5%BA%B7%E5%95%93-%E9%88%B4%E6%9C%A8-a61107279/)
+
+---
 *Disclaimer: このプロジェクトはAIとの対話によって生成された仮説を含んでおり、実際の臨床データに基づくものではありません。工学的手法の認知科学への適用可能性を探るための「論理的実験」です。*
