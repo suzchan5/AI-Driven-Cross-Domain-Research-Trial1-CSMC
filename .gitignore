@@ -1,0 +1,15 @@
+# MacOS junk
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Project specific
+*.pdf
+# (If you want to keep final PDFs, comment the line above)

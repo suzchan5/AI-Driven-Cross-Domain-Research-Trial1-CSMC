@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+body { font-family: "Hiragino Mincho ProN", serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; }
+h1, h2, h3 { font-family: "Hiragino Kaku Gothic ProN", sans-serif; }
+table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+th { background-color: #f2f2f2; }
+img { max-width: 100%; }
+.math-display { text-align: center; margin: 1em 0; }
+</style>
+<script>
+MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<h1>前刷原稿（講演予稿）</h1>
+
+<h2>「頭が真っ白になる瞬間」を数理で防ぐ：認知スライディングモード制御（C-SMC）による想起プロセスの安定化</h2>
+
+<p><strong>鈴木 康啓</strong></p>
+
+<hr>
+
+<h3>1. はじめに</h3>
+<p>高度な知的労働や対人コミュニケーションにおいて、過度の情動的負荷により前頭前野（PFC）の機能が一時的に低下し、「頭が真っ白になる」現象が知られている。本研究では、この認知的脆弱性を「制御システムのロバスト性の欠如」として再定式化し、スライディングモード制御（SMC）に基づく介入メカニズム「Cognitive Sliding Mode Control (C-SMC)」を提案する。</p>
+
+<h3>2. 手法</h3>
+<p>人間の認知状態を「健全状態」と「崩壊状態」の2つの安定点を持つ双安定システム（Double-Well Potential）としてモデル化した。</p>
+
+<div class="math-display">
+$$ dx = (ax - bx^3)dt + (u + d)dt + \sigma dW $$
+</div>
+
+<p>この系に対し、境界層付きSMC制御則を適用する：</p>
+
+<div class="math-display">
+$$ u = -K \tanh\left(\frac{s}{\phi}\right) $$
+</div>
+
+<p>ここで $K=5.0$（ゲイン）、$\phi=0.3$（境界層）は最適化により決定した。</p>
+
+<h3>3. 結果</h3>
+<p>30分間のシミュレーション（n=100, Monte Carlo）において、パニックパルス（$d=-2.5$, $t=720$--$840$s）印加時でも、提案手法は遵守率 <strong>99.9% ± 0.1%</strong> を達成した。比較実験では、微分項を含む制御則（Phase 1）や過小ゲイン（Phase 2）、過小境界層（Phase 3）はいずれも失敗し、「適度な柔軟性」の重要性が明らかになった。</p>
+
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>ゲイン $K$</th>
+<th>境界層 $\phi$</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>30.0</td>
+<td>0.1</td>
+<td>発散（Panic Spiral）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.5</td>
+<td>0.3</td>
+<td>転落（Silent Submission）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>30.0</td>
+<td>0.01</td>
+<td>チャタリング</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong>5.0</strong></td>
+<td><strong>0.3</strong></td>
+<td><strong>安定（99.9%）</strong></td>
+</tr>
+</tbody>
+</table>
+
+<h3>4. 結論</h3>
+<p>本研究は、「パニックによる思考停止」に対し制御工学的介入が可能であることを示した。C-SMCは、AIの役割を静的なタスク支援から、人間の精神的恒常性を動的に守る「認知ペースメーカー」へと拡張するものである。今後はHuman-in-the-Loop実証および神経科学的検証を予定している。</p>
+
+<h3>参考文献</h3>
+<p>[1] A.O.J. Cramer et al., PLoS One, 11(12), 2016.<br>
+[2] M. Scheffer et al., Nature, 461, 2009.<br>
+[5] V.I. Utkin, Sliding Modes in Control and Optimization, Springer, 1992.<br>
+[7] A.F.T. Arnsten, Nat. Rev. Neurosci., 10, 2009.</p>
+
+<hr>
+
+<p><strong>キーワード:</strong> スライディングモード制御, 認知科学, 双安定システム, パニック抑制, メタ認知</p>
+
+</body>
+</html>

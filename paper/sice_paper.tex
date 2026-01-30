@@ -1,0 +1,168 @@
+% SICE Annual Conference Paper Format
+% A4, 2-column, 6 pages max
+\documentclass[twocolumn,a4paper,10pt]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{CJKutf8}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[top=20mm,bottom=20mm,left=15mm,right=15mm]{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{caption}
+
+% --- Title formatting ---
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing{\section}{0pt}{1.5ex}{1ex}
+\titlespacing{\subsection}{0pt}{1ex}{0.5ex}
+
+% --- Compact lists ---
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=*}
+
+% --- Header/Footer ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+% --- Document ---
+\begin{document}
+\begin{CJK}{UTF8}{ipxm}
+
+% --- Title ---
+\twocolumn[
+\begin{@twocolumnfalse}
+\begin{center}
+{\Large \textbf{「頭が真っ白になる瞬間」を数理で防ぐ：\\認知スライディングモード制御（C-SMC）による\\想起プロセスの安定化とパニック抑制}}\\[0.8em]
+{\large 鈴木 康啓}\\[0.3em]
+{\small \today}\\[1.5em]
+\end{center}
+\end{@twocolumnfalse}
+]
+
+% --- Abstract ---
+\section*{Abstract}
+本研究では、強いプレッシャー下で思考が停止する現象を防ぐ認知制御フレームワークを提案する。人間の認知状態を双安定システム（Bistable Cognitive Model）としてモデル化し、スライディングモード制御（SMC）を適用することで「Cognitive Sliding Mode Control (C-SMC)」を構築した。シミュレーションでは、最適化モデルが極端な外乱に対しても遵守率99.9\%を維持することに成功した。
+
+\textbf{Keywords:} スライディングモード制御, 認知科学, 双安定システム, パニック抑制
+
+% --- 1. Introduction ---
+\section{序論}
+
+\subsection{背景と課題}
+高度な知的労働において、過度の情動的負荷により前頭前野（PFC）の機能が低下し、「頭が真っ白になる」現象が知られている[7]。既存研究はメカニズムの記述に主眼を置き、工学的な制御アプローチは未開拓である。
+
+\subsection{提案手法}
+本研究では、想起プロセスを双安定システム（Double-Well Potential）としてモデル化し、パニック性の情動反応を「外乱」として扱う。これにSMCを適用し、メタ認知機能を数理的に実装した「C-SMC」を提案する。
+
+\subsection{貢献}
+\begin{enumerate}
+\item 双安定認知モデルを制御対象とし、認知科学と制御工学の融合領域を開拓
+\item 外乱を相殺し想起プロセスを安定化するC-SMCアルゴリズムを提示
+\item 遵守率99.9\%±0.1\%（n=100, Monte Carlo）の達成を実証
+\end{enumerate}
+
+% --- 2. Related Work ---
+\section{先行研究}
+
+\subsection{認知プロセスのモデル化}
+Cramerら[1]はうつ病を動的システムの「代替安定状態」としてモデル化し、Schefferら[2]は「不可逆的変容」の存在を示した。
+
+\subsection{制御理論におけるロバスト性}
+Utkinらによるスライディングモード制御[5][6]は、外乱をキャンセルする「不変性条件」を持つ。これを認知プロセスに応用する試みは存在しない。
+
+% --- 3. Methodology ---
+\section{研究手法}
+
+\subsection{システム概要}
+認知制御問題をフィードバック制御システムとしてモデル化する。人間の認知プロセスをプラントとし、C-SMCエージェントをロバストコントローラーとして配置する（図1）。
+
+\subsection{制御対象：Double-Well Potential}
+双安定性を表現するDouble-Well Potentialモデル:
+\begin{equation}
+dx = (ax - bx^3) dt + (u + d) dt + \sigma dW
+\end{equation}
+\textbf{つまり:} 一度大きく崩れると雪崩のように転落するという心理特性を反映した式である。
+
+\subsection{コントローラー設計：C-SMC}
+スライディング面: $s = x(t) - r$
+
+制御則（境界層付き）:
+\begin{equation}
+u = -K \tanh\left(\frac{s}{\phi}\right)
+\end{equation}
+$K=5.0$（ゲイン）、$\phi=0.3$（境界層）を最適値とした。
+
+% --- 4. Experiments ---
+\section{実験と結果}
+
+\subsection{シミュレーション条件}
+時間分解能$dt=0.01$s、全期間$T=1800$s（30分間）。パニックパルスを$t=720$--$840$sに印加。
+
+\subsection{パラメータ設定}
+表1に各Phaseの制御パラメータを示す。
+
+\begin{table}[H]
+\centering
+\caption{各Phaseの制御パラメータ}
+\small
+\begin{tabular}{cccl}
+\toprule
+Phase & $K$ & $\phi$ & 結果 \\
+\midrule
+1 & 30.0 & 0.1 & 発散 \\
+2 & 0.5 & 0.3 & 転落 \\
+3 & 30.0 & 0.01 & チャタリング \\
+\textbf{4} & \textbf{5.0} & \textbf{0.3} & \textbf{安定（99.9\%）} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{最終結果}
+Phase 4のC-SMCは、パニックパルス印加時も状態を安全圏に保持し、遵守率99.9\%$\pm$0.1\%（n=100, Monte Carlo）を達成した。
+
+% --- 5. Discussion ---
+\section{考察：実社会実装に向けた設計指針}
+
+\begin{enumerate}
+\item \textbf{フェーディング機能:} 状態安定後は$K$を漸減し、自律性を回復
+\item \textbf{予測的介入:} 心拍変動等から外乱予兆を検知し先行介入
+\item \textbf{UI/UX変換:} 制御入力$u$を光・振動・キーワードに変換
+\item \textbf{個人特性推定:} リアルタイムでコンディションを推定し適応制御
+\item \textbf{倫理的ガードレール:} ユーザーの「沈黙する権利」を尊重
+\end{enumerate}
+
+% --- 6. Conclusion ---
+\section{結論}
+
+本研究は、「パニックによる思考停止」に対し制御工学的介入が可能であることを示した最初の試みである。双安定認知モデルにSMCを適用することで、極端な情動外乱下でも想起プロセスを維持するC-SMCを構築した。
+
+\textbf{主要な洞察:}
+\begin{itemize}
+\item \textbf{PFC様機能の代替可能性:} AIが認知機能の一部を代替する可能性を示唆
+\item \textbf{しなやかな強さ:} 完璧主義は脆く、「遊び」を持たせた制御が最も強靭
+\end{itemize}
+
+\textbf{今後の課題:} Human-in-the-Loop実証、適応的境界層、神経科学的検証（fMRI/EEG）
+
+% --- References ---
+\begin{thebibliography}{9}
+\bibitem{cramer} A.O.J. Cramer et al., ``Major depression as a complex dynamic system,'' \textit{PLoS One}, 11(12), 2016.
+\bibitem{scheffer} M. Scheffer et al., ``Early-warning signals for critical transitions,'' \textit{Nature}, 461, 2009.
+\bibitem{george} A.L. George, A. Bennett, \textit{Case Studies and Theory Development}. MIT Press, 2005.
+\bibitem{edwards} W. Edwards, ``Dynamic decision theory,'' \textit{Human Factors}, 4, 1962.
+\bibitem{utkin} V.I. Utkin, \textit{Sliding Modes in Control and Optimization}. Springer, 1992.
+\bibitem{slotine} J.J.E. Slotine, W. Li, \textit{Applied Nonlinear Control}. Prentice-Hall, 1991.
+\bibitem{arnsten} A.F.T. Arnsten, ``Stress signalling pathways that impair PFC,'' \textit{Nat. Rev. Neurosci.}, 10, 2009.
+\bibitem{gross} J.J. Gross, ``Emotion regulation,'' \textit{Psychophysiology}, 39, 2002.
+\end{thebibliography}
+
+\end{CJK}
+\end{document}
