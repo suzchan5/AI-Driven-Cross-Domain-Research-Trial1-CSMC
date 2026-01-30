@@ -12,6 +12,10 @@
 The question "Can we transcend the boundaries of expertise?" is not a claim that human experts are becoming unnecessary. On the contrary, deep respect for the vast knowledge accumulated by experts in each field lies at the foundation of this project.
 AI can serve as a "ladder" to democratize access to expert knowledge, but climbing that ladder to discover new truths and take responsibility remains a uniquely human role. This research explores not the conflict between experts and AI, but the new "intellectual horizons" reachable only through their collaboration.
 
+## 📺 Project Introduction Video
+![Project Introduction](docs/videos/intro_en.mp4)
+
+
 ## 🚀 AI-Driven Research Workflow (The Core Innovation)
 
 The core value of this project lies in the "AI-Human-AI Loop" shown in the diagram below. It ensures academic robustness by incorporating not just **Generation**, but also **"Strict Auditing"** and **"Adversarial Review"** into the process.
