@@ -13,7 +13,7 @@ The question "Can we transcend the boundaries of expertise?" is not a claim that
 AI can serve as a "ladder" to democratize access to expert knowledge, but climbing that ladder to discover new truths and take responsibility remains a uniquely human role. This research explores not the conflict between experts and AI, but the new "intellectual horizons" reachable only through their collaboration.
 
 ## 📺 Project Introduction Video
-![Project Introduction](docs/videos/intro_en.mp4)
+[![Project Introduction](https://img.youtube.com/vi/ZPjX78lChjE/0.jpg)](https://www.youtube.com/watch?v=ZPjX78lChjE)
 
 
 ## 🚀 AI-Driven Research Workflow (The Core Innovation)
