@@ -13,7 +13,7 @@
 AIは専門知へのアクセスを民主化する「梯子」になり得ますが、その梯子を登った先で新たな真理を発見し、責任を持つのは依然として人間の役割です。本研究は、専門家とAIが対立するのではなく、協調することで到達できる「新たな知の地平」を模索するものです。
 
 ## 📺 プロジェクト紹介動画
-![Project Introduction](docs/videos/intro_jp.mp4)
+[![Project Introduction](https://img.youtube.com/vi/TSaRj9Pefp4/0.jpg)](https://www.youtube.com/watch?v=TSaRj9Pefp4)
 
 
 
